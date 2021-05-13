@@ -2,6 +2,7 @@ package ru.dmitrymorel.city_directory_handler.controllers;
 
 import ru.dmitrymorel.city_directory_handler.models.City;
 import ru.dmitrymorel.city_directory_handler.service.CityService;
+import ru.dmitrymorel.city_directory_handler.service.CityServiceImpl;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -10,7 +11,7 @@ import java.util.Map;
 
 public class CityController {
 
-    private CityService cityService;
+    private CityService cityService = new CityServiceImpl();
 
     public CityController() {
     }
