@@ -7,13 +7,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
+
         CityController cityController = new CityController();
         List<City> cityList = new ArrayList<>();
 
-        cityList = cityController.parseFile(new File("src/main/resources/Cities.txt"));
+        cityController.dialog();
+
+//        cityList = cityController.parseFile(new File("src/main/resources/Cities.txt"));
 
         /*cityList.forEach(System.out::println);
         System.out.println("===========================");
@@ -32,19 +36,19 @@ public class Main {
 
 //        cityController.createTable();
 //
-//        cityList.forEach(cityController::saveCity);
+//
 
 
 
 //        System.out.println(cityController.getCity("Майкоп"));
 //        cityController.updateCity("Майкоп", new City("Майкоп","qwer", "agd", 234, "gdfs"));
 //        System.out.println(cityController.getCity("Майкоп"));
-        cityController.deleteCity("Майкоп");
-        System.out.println(cityController.getCity("Майкоп"));
-
-        System.out.println("===========================");
-
-        List<City> cityList2 = cityController.findAll();
-        cityList2.forEach(System.out::println);
+//        cityController.deleteCity("Майкоп");
+//        System.out.println(cityController.getCity("Майкоп"));
+//
+//        System.out.println("===========================");
+//
+//        List<City> cityList2 = cityController.findAll();
+//        cityList2.forEach(System.out::println);
     }
 }

@@ -4,10 +4,7 @@ import ru.dmitrymorel.city_directory_handler.dao.CityDAO;
 import ru.dmitrymorel.city_directory_handler.dao.CityDAOImpl;
 import ru.dmitrymorel.city_directory_handler.models.City;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.List;
-import java.util.Map;
 
 public class CityServiceImpl implements CityService{
 
@@ -32,11 +29,6 @@ public class CityServiceImpl implements CityService{
     @Override
     public void deleteCity(String name) {
         cityDAO.deleteCity(name);
-    }
-
-    @Override
-    public List<City> parseFile(File file) throws FileNotFoundException {
-        return cityDAO.parseFile(file);
     }
 
     @Override

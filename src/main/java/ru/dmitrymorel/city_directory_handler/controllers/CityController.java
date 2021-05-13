@@ -14,6 +14,8 @@ public class CityController {
     private final SortService sortService = new SortServiceImpl();
     private final SearchService searchService = new SearchServiceImpl();
     private final GroupingService groupingService = new GroupingServiceImpl();
+    private final ParserService parserService = new ParserServiceImpl();
+    private final DialogService dialogService = new DialogServiceImpl();
 
     public CityController() {
     }
@@ -44,7 +46,7 @@ public class CityController {
 
 
     public List<City> parseFile(File file) throws FileNotFoundException {
-        return cityService.parseFile(file);
+        return parserService.parseFile(file);
     }
 
     public List<City> sortCitiesByName(List<City> cityList) {
@@ -61,5 +63,9 @@ public class CityController {
 
     public Map<String, Integer> countOfCitiesInRegion(List<City> cityList) {
         return groupingService.countOfCitiesInRegion(cityList);
+    }
+
+    public void dialog() {
+        dialogService.dialog();
     }
 }

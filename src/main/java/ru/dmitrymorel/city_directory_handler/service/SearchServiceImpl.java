@@ -2,10 +2,7 @@ package ru.dmitrymorel.city_directory_handler.service;
 
 import ru.dmitrymorel.city_directory_handler.models.City;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class SearchServiceImpl implements SearchService{
 

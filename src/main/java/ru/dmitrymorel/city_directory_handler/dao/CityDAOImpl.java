@@ -152,28 +152,4 @@ public class CityDAOImpl implements CityDAO{
             throwables.printStackTrace();
         }
     }
-
-    /**
-     * Метод заполняет список городов, читая значения из файла, исполузуемого в сканере
-     * @param file - исследуемый файл
-     * @throws FileNotFoundException - файл не найден
-     */
-    @Override
-    public List<City> parseFile(File file) throws FileNotFoundException {
-
-        Scanner fileScanner = new Scanner(file);
-        List<City> cityList = new ArrayList<>();
-        fileScanner.useDelimiter(";");
-        while (fileScanner.hasNext()) {
-            fileScanner.next();
-            String name = fileScanner.next();
-            String region = fileScanner.next();
-            String district = fileScanner.next();
-            int population = fileScanner.nextInt();
-            String foundation = fileScanner.next();
-            cityList.add(new City(name, region, district, population, foundation));
-        }
-        fileScanner.close();
-        return cityList;
-    }
 }

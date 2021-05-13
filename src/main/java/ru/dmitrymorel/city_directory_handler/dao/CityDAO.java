@@ -20,6 +20,4 @@ public interface CityDAO {
     void updateCity(String name, City city);
 
     void deleteCity(String name);
-
-    List<City> parseFile(File file) throws FileNotFoundException;
 }

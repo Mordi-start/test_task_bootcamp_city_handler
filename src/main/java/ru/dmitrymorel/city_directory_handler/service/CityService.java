@@ -17,8 +17,6 @@ public interface CityService {
 
     void deleteCity(String name);
 
-    List<City> parseFile(File file) throws FileNotFoundException;
-
     void createTable();
 
     void updateCity(String name, City city);
