@@ -9,13 +9,17 @@ import java.util.Map;
 
 public interface CityDAO {
 
+    void createTable();
+
     List<City> findAll();
 
     void saveCity(City employee);
 
-    City getCity(int id);
+    City getCity(String name);
 
-    void deleteCity(int id);
+    void updateCity(String name, City city);
+
+    void deleteCity(String name);
 
     List<City> parseFile(File file) throws FileNotFoundException;
 

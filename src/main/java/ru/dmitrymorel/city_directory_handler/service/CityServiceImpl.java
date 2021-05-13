@@ -11,27 +11,27 @@ import java.util.Map;
 
 public class CityServiceImpl implements CityService{
 
-    private CityDAO cityDAO = new CityDAOImpl();
+    private final CityDAO cityDAO = new CityDAOImpl();
 
 
     @Override
     public List<City> findAll() {
-        return null;
+        return cityDAO.findAll();
     }
 
     @Override
-    public void saveCity(City employee) {
-
+    public void saveCity(City city) {
+        cityDAO.saveCity(city);
     }
 
     @Override
-    public City getCity(int id) {
-        return null;
+    public City getCity(String name) {
+        return cityDAO.getCity(name);
     }
 
     @Override
-    public void deleteCity(int id) {
-
+    public void deleteCity(String name) {
+        cityDAO.deleteCity(name);
     }
 
     @Override
@@ -57,5 +57,15 @@ public class CityServiceImpl implements CityService{
     @Override
     public Map<String, Integer> countOfCitiesInRegion(List<City> cityList) {
         return cityDAO.countOfCitiesInRegion(cityList);
+    }
+
+    @Override
+    public void createTable() {
+        cityDAO.createTable();
+    }
+
+    @Override
+    public void updateCity(String name, City city) {
+        cityDAO.updateCity(name, city);
     }
 }

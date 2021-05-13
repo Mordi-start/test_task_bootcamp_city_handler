@@ -13,9 +13,9 @@ public interface CityService {
 
     void saveCity(City employee);
 
-    City getCity(int id);
+    City getCity(String name);
 
-    void deleteCity(int id);
+    void deleteCity(String name);
 
     List<City> parseFile(File file) throws FileNotFoundException;
 
@@ -26,4 +26,8 @@ public interface CityService {
     int[] findMaxPopulation(List<City> cityList);
 
     Map<String, Integer> countOfCitiesInRegion(List<City> cityList);
+
+    void createTable();
+
+    void updateCity(String name, City city);
 }

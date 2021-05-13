@@ -11,10 +11,35 @@ import java.util.Map;
 
 public class CityController {
 
-    private CityService cityService = new CityServiceImpl();
+    private final CityService cityService = new CityServiceImpl();
 
     public CityController() {
     }
+
+    public void createTable() {
+        cityService.createTable();
+    }
+
+    public List<City> findAll() {
+        return cityService.findAll();
+    }
+
+    public City getCity(String name) {
+        return cityService.getCity(name);
+    }
+
+    public void saveCity(City city) {
+        cityService.saveCity(city);
+    }
+
+    public void updateCity(String name, City city) {
+        cityService.updateCity(name, city);
+    }
+
+    public void deleteCity(String name) {
+        cityService.deleteCity(name);
+    }
+
 
     public List<City> parseFile(File file) throws FileNotFoundException {
         return cityService.parseFile(file);

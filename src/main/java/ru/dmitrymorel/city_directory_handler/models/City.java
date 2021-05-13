@@ -9,6 +9,8 @@ public class City {
     private int population;
     private String foundationDate;
 
+    public City() {}
+
     public City(String name, String region, String federalDistrict, int population, String foundationDate) {
         this.name = name;
         this.region = region;
