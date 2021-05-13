@@ -40,26 +40,6 @@ public class CityServiceImpl implements CityService{
     }
 
     @Override
-    public List<City> sortCitiesByName(List<City> cityList) {
-        return cityDAO.sortCitiesByName(cityList);
-    }
-
-    @Override
-    public List<City> sortCitiesByDistrictAndName(List<City> cityList) {
-        return cityDAO.sortCitiesByDistrictAndName(cityList);
-    }
-
-    @Override
-    public int[] findMaxPopulation(List<City> cityList) {
-        return cityDAO.findMaxPopulation(cityList);
-    }
-
-    @Override
-    public Map<String, Integer> countOfCitiesInRegion(List<City> cityList) {
-        return cityDAO.countOfCitiesInRegion(cityList);
-    }
-
-    @Override
     public void createTable() {
         cityDAO.createTable();
     }

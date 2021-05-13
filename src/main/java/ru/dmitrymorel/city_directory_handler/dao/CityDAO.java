@@ -22,12 +22,4 @@ public interface CityDAO {
     void deleteCity(String name);
 
     List<City> parseFile(File file) throws FileNotFoundException;
-
-    List<City> sortCitiesByName(List<City> cityList);
-
-    List<City> sortCitiesByDistrictAndName(List<City> cityList);
-
-    int[] findMaxPopulation(List<City> cityList);
-
-    Map<String, Integer> countOfCitiesInRegion(List<City> cityList);
 }
