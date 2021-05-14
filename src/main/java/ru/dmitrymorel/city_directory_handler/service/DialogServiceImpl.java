@@ -5,7 +5,6 @@ import ru.dmitrymorel.city_directory_handler.models.City;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class DialogServiceImpl implements DialogService{
@@ -14,6 +13,9 @@ public class DialogServiceImpl implements DialogService{
     public void dialog() {
         ParserService parserService = new ParserServiceImpl();
         CityService cityService = new CityServiceImpl();
+        SortService sortService = new SortServiceImpl();
+        SearchService searchService = new SearchServiceImpl();
+        GroupingService groupingService = new GroupingServiceImpl();
 
         String dialog = "Выбери действие:\n" +
                 "1. Внести данные из файла в базу данных\n" +
@@ -26,13 +28,12 @@ public class DialogServiceImpl implements DialogService{
                 "8. Найти город с самой большой популяцией\n" +
                 "9. Показать количество городов по регионам\n" +
                 "10. Показать меню\n" +
-                "11. Очистить консоль\n" +
                 "\"q\" - для выхода\n";
 
         System.out.println(dialog);
 
         Scanner console = new Scanner(System.in);
-        List<City> cityList = null;
+        List<City> cityList = cityService.findAll();
 
         String number;
         while (!(number = console.nextLine()).equals("q")) {
@@ -48,7 +49,7 @@ public class DialogServiceImpl implements DialogService{
                     break;
                 }
                 case "2": {
-                    cityService.findAll().forEach(System.out::println);
+                    cityList.forEach(System.out::println);
                     break;
                 }
                 case "3": {
@@ -82,11 +83,48 @@ public class DialogServiceImpl implements DialogService{
 
                     break;
                 }
-//                case "5":
-//                    for (Map.Entry<String, List<City>> entry : countOfCitiesInRegion(cityList).entrySet()) {
-//                        System.out.println(entry.getKey() + " - " + (long) entry.getValue().size());
-//                    }
+                case "5": {
+                    System.out.println("Введите название города, который хотите удалить");
+                    String name = console.nextLine();
+                    cityService.deleteCity(name);
+                    break;
+                }
+                case "6": {
+                    cityList = sortService.sortCitiesByName(cityList);
+                    if (cityList != null) {
+                        cityList.forEach(System.out::println);
+                    }
+                    else {
+                        System.out.println("Список пуст");
+                    }
+                    break;
+                }
+                case "7": {
+                    cityList = sortService.sortCitiesByDistrictAndName(cityList);
+                    if (cityList != null) {
+                        cityList.forEach(System.out::println);
+                    }
+                    else {
+                        System.out.println("Список пуст");
+                    }
+                    break;
+                }
+                case "8": {
+                    int[] population = searchService.findMaxPopulation(cityList);
+                    System.out.println("[" + population[0] + "] = " + population[1]);
+                    break;
+                }
+                case "9": {
+                    groupingService.countOfCitiesInRegion(cityList).forEach((k, v) -> System.out.println(k + " - " + v));
+                    break;
+                }
+                case "10": {
+                    System.out.println(dialog);
+                    break;
+                }
+//                case "11": {
 //                    break;
+//                }
                 default:
                     System.out.println("Введено некорректное значение");
             }
